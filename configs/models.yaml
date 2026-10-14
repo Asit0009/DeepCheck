@@ -1,0 +1,66 @@
+common:
+  canvas_size: 256  # resized canvas size
+  input_size: 224   # model input crop size
+  class_names: [real, ai_generated]
+  seed: 20261012
+
+models:
+  convnext_tiny:
+    timm_name: convnext_tiny.fb_in1k
+    description: ConvNeXt-Tiny fine-tuned
+  convnext_tiny_dinov3:
+    timm_name: convnext_tiny.dinov3_lvd1689m
+    description: ConvNeXt-Tiny with DINOv3 features
+  efficientnet_b0:
+    timm_name: efficientnet_b0.ra_in1k
+    description: EfficientNet-B0 fine-tuned
+
+selection:
+  selection_unseen_generator: VQDM
+  final_report_unseen_generator: Midjourney
+  score: mean of balanced accuracy on [validation, VQDM unseen test] at each model's calibrated threshold
+  constraints:
+    max_single_image_latency_seconds: 5.0
+    max_false_positive_rate_unseen: 0.5
+
+calibration:
+  target_precision: 0.90
+
+training:
+  default:
+    lr: 1.0e-4
+    head_lr: 1.0e-3
+    weight_decay: 0.05
+    batch_size: 8
+    warmup_steps: 40
+    epochs: 3
+    samples_per_epoch: 3000
+    eval_every_steps: 150
+    val_subset: 600
+    augmentation:
+      rescale_prob: 0.30
+      jpeg_prob: 0.40
+      blur_prob: 0.15
+      flip: true
+  convnext_tiny:
+    lr: 5.0e-5
+    head_lr: 5.0e-4
+    batch_size: 8
+    samples_per_epoch: 4000
+    epochs: 2
+    eval_every_steps: 250
+  convnext_tiny_dinov3:
+    lr: 5.0e-5
+    head_lr: 5.0e-4
+    batch_size: 8
+    samples_per_epoch: 4000
+    epochs: 2
+    eval_every_steps: 250
+  efficientnet_b0:
+    lr: 2.0e-4
+    head_lr: 1.0e-3
+    batch_size: 8
+    weight_decay: 0.01
+    samples_per_epoch: 4000
+    epochs: 2
+    eval_every_steps: 250

@@ -1,0 +1,57 @@
+{
+  "model_id": "convnext_tiny_dinov3_linear_v1",
+  "architecture": "convnext_tiny_dinov3_linear",
+  "timm_name": "convnext_tiny.dinov3_lvd1689m",
+  "version": "1.0.0",
+  "description": "ConvNeXt-Tiny with DINOv3 self-supervised initialisation (frozen backbone, linear head fitted by logistic regression)",
+  "class_names": [
+    "real",
+    "ai_generated"
+  ],
+  "positive_class": "ai_generated",
+  "output": "one logit; sigmoid(logit) is the (uncalibrated) AI-generated score",
+  "input": {
+    "canvas_size": 256,
+    "crop_size": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "preprocessing": "EXIF-transpose, RGB, centre square crop, bicubic resize to 256, centre crop 224, normalise"
+  },
+  "training": {
+    "method": "frozen backbone + logistic regression (standardised features), head folded into the final layer",
+    "backbone_weights": "convnext_tiny.dinov3_lvd1689m",
+    "train_images": 6000,
+    "regularisation_C": 0.01,
+    "C_chosen_on": "validation split log-loss",
+    "validation_log_loss": 0.4434833634914456,
+    "train_accuracy": 0.8645,
+    "feature_dim": 768,
+    "augmentation": "none",
+    "device": "cpu"
+  },
+  "data": {
+    "source": "GenImage (nebula/GenImage-arrow mirror)",
+    "license": "CC BY-NC-SA 4.0 (non-commercial research use only; see docs/DATASET_AND_SPLITS.md)",
+    "familiar_generators": [
+      "ADM",
+      "BigGAN",
+      "glide",
+      "stable_diffusion_v_1_4",
+      "stable_diffusion_v_1_5",
+      "wukong"
+    ],
+    "unseen_generators_never_trained_on": [
+      "Midjourney",
+      "VQDM"
+    ]
+  },
+  "saved_at": "2026-10-13T11:39:01+0530"
+}

@@ -1,0 +1,120 @@
+{
+  "model_id": "convnext_tiny_dinov3_v1",
+  "architecture": "convnext_tiny_dinov3",
+  "timm_name": "convnext_tiny.dinov3_lvd1689m",
+  "version": "1.0.0",
+  "description": "ConvNeXt-Tiny with DINOv3 self-supervised initialisation",
+  "class_names": [
+    "real",
+    "ai_generated"
+  ],
+  "positive_class": "ai_generated",
+  "output": "one logit; sigmoid(logit) is the (uncalibrated) AI-generated score",
+  "input": {
+    "canvas_size": 256,
+    "crop_size": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "preprocessing": "EXIF-transpose, RGB, centre square crop, bicubic resize to 256, centre crop 224, normalise"
+  },
+  "training": {
+    "lr": 5e-05,
+    "head_lr": 0.0005,
+    "weight_decay": 0.05,
+    "batch_size": 8,
+    "warmup_steps": 40,
+    "epochs": 2,
+    "samples_per_epoch": 4000,
+    "eval_every_steps": 250,
+    "val_subset": 600,
+    "augmentation": {
+      "rescale_prob": 0.3,
+      "jpeg_prob": 0.4,
+      "blur_prob": 0.15,
+      "flip": true
+    },
+    "device": "cpu",
+    "amp": false,
+    "threads": 4,
+    "seed": 20261012,
+    "total_steps": 1000,
+    "best_validation_auc": 0.9060767341859354,
+    "training_minutes": 247.3,
+    "pretrained_weights": "convnext_tiny.dinov3_lvd1689m",
+    "train_images_available": 10191,
+    "images_seen": 8000
+  },
+  "data": {
+    "source": "GenImage (nebula/GenImage-arrow mirror)",
+    "license": "CC BY-NC-SA 4.0 (non-commercial research use only; see docs/DATASET_AND_SPLITS.md)",
+    "familiar_generators": [
+      "ADM",
+      "BigGAN",
+      "glide",
+      "stable_diffusion_v_1_4",
+      "stable_diffusion_v_1_5",
+      "wukong"
+    ],
+    "unseen_generators_never_trained_on": [
+      "Midjourney",
+      "VQDM"
+    ],
+    "split_counts": {
+      "train/real": 5092,
+      "train/fake": 5099,
+      "validation/real": 900,
+      "validation/fake": 900
+    }
+  },
+  "validation_history": [
+    {
+      "val_loss": 0.5790135860443115,
+      "val_auc": 0.8155979510883454,
+      "val_balanced_acc": 0.7310581228680318,
+      "val_tpr": 0.5484949832775919,
+      "val_tnr": 0.9136212624584718,
+      "step": 250,
+      "train_loss": 0.7104536303281784,
+      "elapsed_min": 31.2
+    },
+    {
+      "val_loss": 0.5035398602485657,
+      "val_auc": 0.8606540072667475,
+      "val_balanced_acc": 0.7695752175024166,
+      "val_tpr": 0.6421404682274248,
+      "val_tnr": 0.8970099667774086,
+      "step": 500,
+      "train_loss": 0.6057936131954194,
+      "elapsed_min": 129.8
+    },
+    {
+      "val_loss": 0.4746514856815338,
+      "val_auc": 0.86779853109479,
+      "val_balanced_acc": 0.7918810209002323,
+      "val_tpr": 0.8561872909698997,
+      "val_tnr": 0.7275747508305648,
+      "step": 750,
+      "train_loss": 0.5517083061933518,
+      "elapsed_min": 196.9
+    },
+    {
+      "val_loss": 0.39463189244270325,
+      "val_auc": 0.9060767341859354,
+      "val_balanced_acc": 0.841448238313759,
+      "val_tpr": 0.7759197324414716,
+      "val_tnr": 0.9069767441860465,
+      "step": 1000,
+      "train_loss": 0.4792565379738808,
+      "elapsed_min": 247.2
+    }
+  ],
+  "saved_at": "2026-10-12T22:52:29+0530"
+}

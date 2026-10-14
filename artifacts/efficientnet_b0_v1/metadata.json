@@ -1,0 +1,122 @@
+{
+  "model_id": "efficientnet_b0_v1",
+  "architecture": "efficientnet_b0",
+  "timm_name": "efficientnet_b0.ra_in1k",
+  "version": "1.0.0",
+  "description": "EfficientNet-B0 fine-tuned end to end",
+  "class_names": [
+    "real",
+    "ai_generated"
+  ],
+  "positive_class": "ai_generated",
+  "output": "one logit; sigmoid(logit) is the (uncalibrated) AI-generated score",
+  "input": {
+    "canvas_size": 256,
+    "crop_size": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "preprocessing": "EXIF-transpose, RGB, centre square crop, bicubic resize to 256, centre crop 224, normalise"
+  },
+  "training": {
+    "lr": 0.0002,
+    "head_lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 8,
+    "warmup_steps": 40,
+    "epochs": 2,
+    "samples_per_epoch": 4000,
+    "eval_every_steps": 250,
+    "val_subset": 600,
+    "augmentation": {
+      "rescale_prob": 0.3,
+      "jpeg_prob": 0.4,
+      "blur_prob": 0.15,
+      "flip": true
+    },
+    "device": "cpu",
+    "amp": false,
+    "threads": 4,
+    "seed": 20261012,
+    "total_steps": 1000,
+    "best_validation_auc": 0.8344870498561096,
+    "training_minutes": 95.9,
+    "pretrained_weights": "efficientnet_b0.ra_in1k",
+    "train_images_available": 10191,
+    "images_seen": 8000,
+    "training_minutes_wall_clock": 597.5,
+    "note": "wall-clock minutes include about 8.4 hours during which the laptop was asleep; training_minutes is the active time"
+  },
+  "data": {
+    "source": "GenImage (nebula/GenImage-arrow mirror)",
+    "license": "CC BY-NC-SA 4.0 (non-commercial research use only; see docs/DATASET_AND_SPLITS.md)",
+    "familiar_generators": [
+      "ADM",
+      "BigGAN",
+      "glide",
+      "stable_diffusion_v_1_4",
+      "stable_diffusion_v_1_5",
+      "wukong"
+    ],
+    "unseen_generators_never_trained_on": [
+      "Midjourney",
+      "VQDM"
+    ],
+    "split_counts": {
+      "train/real": 5092,
+      "train/fake": 5099,
+      "validation/real": 900,
+      "validation/fake": 900
+    }
+  },
+  "validation_history": [
+    {
+      "val_loss": 2.1327545642852783,
+      "val_auc": 0.6826964744052711,
+      "val_balanced_acc": 0.6465182946477184,
+      "val_tpr": 0.6020066889632107,
+      "val_tnr": 0.6910299003322259,
+      "step": 250,
+      "train_loss": 1.9980770759079605,
+      "elapsed_min": 522.1
+    },
+    {
+      "val_loss": 1.214718222618103,
+      "val_auc": 0.7798753319481327,
+      "val_balanced_acc": 0.7098967766308515,
+      "val_tpr": 0.6789297658862876,
+      "val_tnr": 0.7408637873754153,
+      "step": 500,
+      "train_loss": 1.3763977211117744,
+      "elapsed_min": 554.2
+    },
+    {
+      "val_loss": 0.9159802198410034,
+      "val_auc": 0.8049200546672741,
+      "val_balanced_acc": 0.7149357215080168,
+      "val_tpr": 0.6956521739130435,
+      "val_tnr": 0.7342192691029901,
+      "step": 750,
+      "train_loss": 0.9283493515700102,
+      "elapsed_min": 583.3
+    },
+    {
+      "val_loss": 0.9040873050689697,
+      "val_auc": 0.8344870498561096,
+      "val_balanced_acc": 0.7329636995966622,
+      "val_tpr": 0.6220735785953178,
+      "val_tnr": 0.8438538205980066,
+      "step": 1000,
+      "train_loss": 0.8282863950580358,
+      "elapsed_min": 597.5
+    }
+  ],
+  "saved_at": "2026-10-13T09:38:53+0530"
+}

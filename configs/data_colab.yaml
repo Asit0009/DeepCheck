@@ -1,0 +1,26 @@
+source:
+  repo: nebula/GenImage-arrow
+  revision: main
+  license: CC BY-NC-SA 4.0
+
+generators:
+  familiar: [ADM, BigGAN, glide, stable_diffusion_v_1_4, stable_diffusion_v_1_5, wukong]
+  unseen: [Midjourney, VQDM]
+
+sampling:
+  seed: 20261012
+  rows_per_batch: 10
+  train_pool:
+    fake_per_generator: 6000  # train images per generator
+    real_per_generator: 6000
+  test:
+    fake_per_generator: 400   # test images per generator
+    real_per_generator: 400
+  calibration:
+    fake_per_generator: 200   # calibration set images
+    real_per_generator: 200
+
+splits:
+  seed: 20261012
+  validation: 0.10            # validation fraction
+  near_duplicate_hamming: 4   # threshold for deduplication

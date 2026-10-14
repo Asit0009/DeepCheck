@@ -1,0 +1,17 @@
+# Versions below are the ones this project was built and tested with (Python 3.13, Windows 11, CPU only).
+# torch/torchvision are the CPU builds; on a GPU machine install the matching CUDA build instead.
+torch==2.10.0
+torchvision==0.25.0
+timm==1.0.30
+streamlit==1.56.0
+numpy==2.4.6
+pillow==12.3.0
+scikit-learn==1.6.1
+scipy==1.15.2
+pandas==2.2.3
+pyarrow==19.0.1
+matplotlib==3.10.1
+requests==2.32.3
+PyYAML==6.0.2
+psutil==7.0.0
+pytest==8.3.5

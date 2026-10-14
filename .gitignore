@@ -1,0 +1,23 @@
+# local machine settings and data
+.env
+data/
+app_data/
+logs/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# model weights and training checkpoints are large and are rebuilt by the pipeline
+# (the small json files next to them are kept: metadata.json, calibration.json)
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.db
+*.sqlite
+*.log
+
+# notebooks outputs
+.ipynb_checkpoints/

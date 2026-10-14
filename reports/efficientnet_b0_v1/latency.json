@@ -1,0 +1,9 @@
+{
+  "model_id": "efficientnet_b0_v1",
+  "n_images": 30,
+  "median_ms": 119.76430006325245,
+  "p95_ms": 149.01620999444273,
+  "mean_ms": 121.64344001406182,
+  "process_rss_mb": 493.1,
+  "hardware": "Intel Core i3-7100U (2 cores / 4 threads), no GPU, PyTorch CPU, batch size 1"
+}

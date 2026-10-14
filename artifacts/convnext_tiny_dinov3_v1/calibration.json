@@ -1,0 +1,155 @@
+{
+  "model_id": "convnext_tiny_dinov3_v1",
+  "fitted_on": {
+    "split": "calibration",
+    "n": 1800,
+    "n_real": 900,
+    "n_ai": 900,
+    "generators": [
+      "ADM",
+      "BigGAN",
+      "glide",
+      "stable_diffusion_v_1_4",
+      "stable_diffusion_v_1_5",
+      "wukong"
+    ]
+  },
+  "calibrator": {
+    "method": "platt",
+    "params": {
+      "a": 0.9772650633984745,
+      "b": 0.3532365050403145
+    }
+  },
+  "calibrator_selection": {
+    "cv_log_loss": {
+      "temperature": 0.4225953175620186,
+      "platt": 0.41584327652940356,
+      "isotonic": 0.43067148587450027
+    },
+    "chosen": "platt"
+  },
+  "binary_threshold": 0.3824,
+  "binary_threshold_note": "score cut-off that maximises balanced accuracy on the calibration split",
+  "decision_rule": {
+    "ai_threshold": 0.7501,
+    "real_threshold": 0.1526,
+    "target_precision": 0.9,
+    "note": ""
+  },
+  "calibration_split_metrics": {
+    "before": {
+      "ece": 0.045045959743569085,
+      "brier": 0.13213873737449408,
+      "log_loss": 0.4219890427807507
+    },
+    "after": {
+      "ece": 0.010352891515350803,
+      "brier": 0.1293273478338746,
+      "log_loss": 0.41356265777455553
+    },
+    "note": "in-sample for the fitted calibrator; honest numbers are on the test / unseen splits (report.py)"
+  },
+  "calibration_split_at_threshold": {
+    "n": 1800,
+    "n_real": 900,
+    "n_ai": 900,
+    "threshold": 0.3824,
+    "accuracy": 0.8327777777777777,
+    "accuracy_ci95": [
+      0.8148330929767663,
+      0.8493050442077846
+    ],
+    "balanced_accuracy": 0.8327777777777778,
+    "precision_ai": 0.8399545970488081,
+    "recall_ai": 0.8222222222222222,
+    "f1_ai": 0.8309938236945537,
+    "precision_real": 0.8258977149075082,
+    "recall_real": 0.8433333333333334,
+    "f1_real": 0.8345244639912041,
+    "macro_f1": 0.8327591438428789,
+    "false_positive_rate": 0.15666666666666668,
+    "false_negative_rate": 0.17777777777777778,
+    "roc_auc": 0.8910679012345679,
+    "average_precision": 0.8969954463695013,
+    "confusion_matrix": {
+      "tn": 759,
+      "fp": 141,
+      "fn": 160,
+      "tp": 740
+    }
+  },
+  "calibration_split_three_way": {
+    "coverage": 0.625,
+    "inconclusive_rate": 0.375,
+    "inconclusive_rate_real": 0.4822222222222222,
+    "inconclusive_rate_ai": 0.2677777777777778,
+    "accuracy_when_decided": 0.9004444444444445,
+    "ai_decisions": 683,
+    "ai_decision_precision": 0.9004392386530015,
+    "real_decisions": 442,
+    "real_decision_precision": 0.9004524886877828
+  },
+  "reliability_bins_after": [
+    {
+      "bin": "0.0-0.1",
+      "count": 7,
+      "mean_score": 0.09536748908472471,
+      "fraction_ai": 0.0
+    },
+    {
+      "bin": "0.1-0.2",
+      "count": 642,
+      "mean_score": 0.1413722856093258,
+      "fraction_ai": 0.14018691588785046
+    },
+    {
+      "bin": "0.2-0.3",
+      "count": 194,
+      "mean_score": 0.23684084595806398,
+      "fraction_ai": 0.25257731958762886
+    },
+    {
+      "bin": "0.3-0.4",
+      "count": 87,
+      "mean_score": 0.34473710906887284,
+      "fraction_ai": 0.3333333333333333
+    },
+    {
+      "bin": "0.4-0.5",
+      "count": 35,
+      "mean_score": 0.45745118484452924,
+      "fraction_ai": 0.5714285714285714
+    },
+    {
+      "bin": "0.5-0.6",
+      "count": 50,
+      "mean_score": 0.5447070617693253,
+      "fraction_ai": 0.58
+    },
+    {
+      "bin": "0.6-0.7",
+      "count": 59,
+      "mean_score": 0.6481075829061851,
+      "fraction_ai": 0.6440677966101694
+    },
+    {
+      "bin": "0.7-0.8",
+      "count": 88,
+      "mean_score": 0.7480945135212387,
+      "fraction_ai": 0.7045454545454546
+    },
+    {
+      "bin": "0.8-0.9",
+      "count": 187,
+      "mean_score": 0.8599890303001994,
+      "fraction_ai": 0.8449197860962567
+    },
+    {
+      "bin": "0.9-1.0",
+      "count": 451,
+      "mean_score": 0.9411992197776557,
+      "fraction_ai": 0.9423503325942351
+    }
+  ]
+}

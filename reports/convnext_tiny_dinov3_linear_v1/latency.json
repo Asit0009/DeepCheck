@@ -1,0 +1,9 @@
+{
+  "model_id": "convnext_tiny_dinov3_linear_v1",
+  "n_images": 30,
+  "median_ms": 617.299799923785,
+  "p95_ms": 916.3641851046119,
+  "mean_ms": 688.9054499876996,
+  "process_rss_mb": 606.6,
+  "hardware": "Intel Core i3-7100U (2 cores / 4 threads), no GPU, PyTorch CPU, batch size 1"
+}
